@@ -14,11 +14,11 @@ processors:
 
 exporters:
   zipkin/zpk:
-    endpoint: http://host.docker.internal:9411/api/v2/spans
+    endpoint: http://zipkin:9411/api/v2/spans
     tls:
       insecure: true
   jaeger:
-    endpoint: host.docker.internal:14250
+    endpoint: jaeger:14250
     tls:
       insecure: true
   logging:
