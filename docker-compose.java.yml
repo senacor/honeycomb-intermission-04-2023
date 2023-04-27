@@ -19,7 +19,7 @@ services:
     image: hnyexample/frontend-java
     environment:
       <<: *common-env
-      OTEL_SERVICE_NAME: frontend-java
+      OTEL_SERVICE_NAME: frontend-svc
     ports:
       - 7777:7777
 
@@ -28,7 +28,7 @@ services:
     image: hnyexample/message-java
     environment:
       <<: *common-env
-      SERVICE_NAME: message-java
+      OTEL_SERVICE_NAME: message-svc
     ports:
       - 9000:9000
 
@@ -37,7 +37,7 @@ services:
     image: hnyexample/name-java
     environment:
       <<: *common-env
-      SERVICE_NAME: name-java
+      OTEL_SERVICE_NAME: name-svc
     ports:
       - 8000:8000
 
@@ -46,6 +46,6 @@ services:
     image: hnyexample/year-java
     environment:
       <<: *common-env
-      SERVICE_NAME: year-java
+      OTEL_SERVICE_NAME: year-svc
     ports:
       - 6001:6001
