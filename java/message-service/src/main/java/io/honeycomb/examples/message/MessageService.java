@@ -27,6 +27,14 @@ public class MessageService {
         Span messageLookupSpan = tracer.spanBuilder("📖 look up message ✨").startSpan();
         messageLookupSpan.makeCurrent();
         int rnd = generator.nextInt(MESSAGES.length);
+        if (rnd == 0) {
+            try {
+                System.out.println("This little maneuver will cost us a few seconds");
+                Thread.sleep(2000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         String message = MESSAGES[rnd];
         messageLookupSpan.end();
         return message;
