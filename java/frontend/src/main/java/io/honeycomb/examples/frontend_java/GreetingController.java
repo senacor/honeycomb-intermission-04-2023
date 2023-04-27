@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import io.opentelemetry.api.baggage.Baggage;
 import io.opentelemetry.api.trace.Span;
@@ -22,6 +23,7 @@ public class GreetingController {
 	@Autowired
 	private Tracer tracer;
 
+	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping("/greeting")
 	public String index() throws URISyntaxException, IOException, InterruptedException {
 		String name = nameService.getName();
@@ -36,7 +38,7 @@ public class GreetingController {
 		String message = messageService.getMessage();
 
 		Span span = tracer.spanBuilder("🎨 render message ✨").startSpan();
-		String greeting = String.format("Hello, %s, %s", name, message);
+		String greeting = String.format("Howdy, %s, %s", name, message);
 		span.end();
 		return greeting;
 	}

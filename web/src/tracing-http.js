@@ -21,7 +21,7 @@ provider.addSpanProcessor(
       // we're sending data to a local collector here because
       // traces are exported in HTTP/JSON which is not yet
       // natively supported by Honeycomb
-      url: 'http://localhost:55681/v1/traces',
+      url: 'http://localhost:4318/v1/traces',
     })
   )
 );

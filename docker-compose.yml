@@ -2,7 +2,7 @@ version: "2.4"
 
 services:
   collector:
-    image: otel/opentelemetry-collector-contrib:0.42.0
+    image: otel/opentelemetry-collector-contrib:0.75.0
     command: ["--config=/etc/otel-collector-config.yaml"]
     environment:
       - HONEYCOMB_API_KEY
@@ -10,9 +10,32 @@ services:
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
-      - "127.0.0.1:55680:55680"
-      - "127.0.0.1:55681:55681"
+      - "55679:55679"
+      - "4317:4317"
+      - "4318:4318"
   redis:
     image: redis:latest
     ports:
       - "127.0.0.1:6379:6379"
+  zipkin:
+    image: ghcr.io/openzipkin/zipkin-slim
+    container_name: zipkin
+    # Environment settings are defined here https://github.com/openzipkin/zipkin/blob/master/zipkin-server/README.md#environment-variables
+    environment:
+      - STORAGE_TYPE=mem
+      - QUERY_LOOKBACK=157784630000
+      - QUERY_LOG_LEVEL=DEBUG
+      - JAVA_OPTS=-Xms256m -Xmx256m -XX:+ExitOnOutOfMemoryError
+    ports:
+      # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411
+    # Uncomment to enable debug logging
+    command: --logging.level.zipkin2=DEBUG
+
+
+# see https://www.jaegertracing.io/docs/1.8/getting-started/
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "16686:16686" #serve frontend
+      - "14250:14250" #accept jaeger.thrift directly from clients

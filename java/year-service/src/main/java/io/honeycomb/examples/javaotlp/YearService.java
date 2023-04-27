@@ -16,11 +16,10 @@ public class YearService {
     private static final Random generator = new Random();
 
     @Autowired
-    private OpenTelemetry otel;
+    private Tracer tracer;
 
     @WithSpan
     public String getYear() {
-        Tracer tracer = otel.getTracer("year-internal");
         Span span = tracer.spanBuilder("🗓 get-a-year ✨").startSpan();
         int rnd = generator.nextInt(YEARS.length);
         String year = YEARS[rnd];
