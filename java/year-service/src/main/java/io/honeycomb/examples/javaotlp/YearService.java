@@ -12,7 +12,7 @@ import io.opentelemetry.api.trace.Tracer;
 
 @Component
 public class YearService {
-    private static final String[] YEARS = new String[]{"2015", "2016", "2017", "2018", "2019", "2020"};
+    private static final String[] YEARS = new String[]{"2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"};
     private static final Random generator = new Random();
 
     @Autowired
