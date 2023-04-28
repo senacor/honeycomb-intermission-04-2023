@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: numbers
+  datasource:
+    url: "jdbc:postgresql://postgresql:5432/template1"
+    username: postgres
+    password: postgres
+
+
+management:
+    otlp:
+        metrics:
+            export:
+                url: ${OTEL_EXPORTER_OTLP_ENDPOINT:"http://localhost:4317"}
+        tracing:
+            enabled: true
+            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:#{'http://localhost:4317'}}
+    tracing:
+        sampling:
+            probability: 1.0
+debug: true

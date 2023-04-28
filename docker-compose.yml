@@ -16,11 +16,11 @@ services:
     depends_on:
       - jaeger
       - zipkin
+      -
   redis:
     image: redis:latest
     ports:
       - "127.0.0.1:6379:6379"
-
 
   zipkin:
     image: ghcr.io/openzipkin/zipkin-slim
@@ -37,6 +37,10 @@ services:
     # Uncomment to enable debug logging
     command: --logging.level.zipkin2=DEBUG
 
+    postgresql:
+      image: postgres:15.2
+      environment:
+        - POSTGRES_PASSWORD=postgres
 
 # see https://www.jaegertracing.io/docs/1.8/getting-started/
   jaeger:
