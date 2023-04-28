@@ -9,8 +9,16 @@ receivers:
         cors:
           allowed_origins: "http://localhost:8080"
 
+  otlp/spanmetrics:
+    protocols:
+      grpc:
+        endpoint: "localhost:65535"
+
 processors:
   batch:
+  spanmetrics:
+    metrics_exporter: prometheus
+
 
 exporters:
   zipkin/zpk:
@@ -27,9 +35,17 @@ exporters:
     endpoint: api.honeycomb.io:443
     headers:
       "x-honeycomb-team": "${HONEYCOMB_API_KEY}"
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+
+
+
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
+      processors: [spanmetrics, batch]
       exporters: [zipkin/zpk, jaeger, otlp/hny] # "logging" could be used for logging
+    metrics/spanmetrics:
+      receivers: [otlp/spanmetrics]
+      exporters: [prometheus]

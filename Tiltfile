@@ -304,7 +304,7 @@ groups = { i: append_lang(i) for i in supported_languages }
 groups["web"] = ["vanillajs-web"]
 
 # Common resources we always want to run
-resources = ['collector', 'zipkin', 'jaeger', 'redis', 'curl greeting']
+resources = ['collector', 'zipkin', 'jaeger', 'redis', 'prometheus', 'curl greeting', 'grafana']
 
 # Create the final list of services to run
 for arg in to_run:
