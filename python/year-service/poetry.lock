@@ -210,14 +210,14 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "honeycomb-beeline"
-version = "3.5.1"
+version = "3.5.2"
 description = "Honeycomb library for easy instrumentation"
 category = "main"
 optional = false
 python-versions = ">=3.7,<4"
 files = [
-    {file = "honeycomb_beeline-3.5.1-py3-none-any.whl", hash = "sha256:911e4322d9ded9055654c3ffb3c5b546b267630f7faf150c55d744a64cfa4191"},
-    {file = "honeycomb_beeline-3.5.1.tar.gz", hash = "sha256:1440a670eaab95b7ade146ac0173fd7e1eeabcd473650166d3138257d6eb42ce"},
+    {file = "honeycomb_beeline-3.5.2-py3-none-any.whl", hash = "sha256:b5c94243f02115dfe6130dbc8cda59cb9cd84654da5e9424640d295d07f5d479"},
+    {file = "honeycomb_beeline-3.5.2.tar.gz", hash = "sha256:137f949c40e20ab8547bb6342e6f3cf093ba029c1dc894c9101f87884eab91ea"},
 ]
 
 [package.dependencies]
@@ -523,4 +523,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0e62e53f92ac8259d191f0c70e1ea5edea19490d2bb6a802fa8f374a05924f83"
+content-hash = "44a2101b47de7b836b16ac35d507f5c86c89f1fea3cfed3217602ddc8d5e893e"
