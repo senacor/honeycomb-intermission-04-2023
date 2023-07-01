@@ -10,7 +10,7 @@ sourceCompatibility = '11'
 
 ext {
     distroVersion = '1.4.2'
-    otelAgentVersion = '1.24.0'
+    otelAgentVersion = '1.27.0'
     otelVersion = '1.24.0'
 }
 
