@@ -11,7 +11,7 @@ sourceCompatibility = '11'
 ext {
     distroVersion = '1.4.2'
     otelVersion = '1.24.0'
-    otelAgentVersion = '1.24.0'
+    otelAgentVersion = '1.29.0'
 }
 
 configurations {
